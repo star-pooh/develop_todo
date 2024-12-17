@@ -100,7 +100,7 @@ public class UserController {
    * @return 삭제 결과
    */
   @DeleteMapping("/{id}")
-  public ResponseEntity<Map<String, UserResponseDto>> deleteUser(@PathVariable Long id) {
+  public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
     this.userService.deleteUser(id);
 
     return new ResponseEntity<>(HttpStatus.OK);
