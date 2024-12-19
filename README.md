@@ -5186,54 +5186,65 @@ https://www.erdcloud.com/d/JsDjKnBC7AzMqP2vm
 
 ### 프로젝트 구조(Lv9 기준)
 
-    📂config
-    ┣ 📜PasswordEncoder.java
-    ┗ 📜WebConfig.java
-    📂controller
-    ┣ 📜AuthController.java
-    ┣ 📜ReplyController.java
-    ┣ 📜TodoController.java
-    ┗ 📜UserController.java
-    📂dto
-    ┣ 📂login
-    ┃ ┗ 📜LoginRequestDto.java
-    ┣ 📂reply
-    ┃ ┣ 📜ReplyCreateRequestDto.java
-    ┃ ┣ 📜ReplyResponseDto.java
-    ┃ ┗ 📜ReplyUpdateRequestDto.java
-    ┣ 📂todo
-    ┃ ┣ 📜TodoCreateRequestDto.java
-    ┃ ┣ 📜TodoPagingResponseDto.java
-    ┃ ┣ 📜TodoResponseDto.java
-    ┃ ┗ 📜TodoUpdateRequestDto.java
-    ┗ 📂user
-    ┃ ┣ 📜UserCreateRequestDto.java
-    ┃ ┣ 📜UserResponseDto.java
-    ┃ ┗ 📜UserUpdateRequestDto.java
-    📂entity
-    ┣ 📜BaseEntity.java
-    ┣ 📜Reply.java
-    ┣ 📜Todo.java
-    ┗ 📜User.java
-    📂exception
-    ┣ 📜CustomRepositoryException.java
-    ┣ 📜CustomValidationException.java
-    ┣ 📜ErrorDetails.java
-    ┗ 📜GlobalExceptionHandler.java
-    📂filter
-    ┗ 📜LoginFilter.java
-    📂repository
-    ┣ 📜ReplyRepository.java
-    ┣ 📜TodoRepository.java
-    ┗ 📜UserRepository.java
-    📂service
-    ┣ 📜ReplyService.java
-    ┣ 📜TodoService.java
-    ┗ 📜UserService.java
-    📂util
-    ┣ 📜ErrorResponse.java
-    ┗ 📜Parse.java
-    📜DevelopTodoApplication.java
+     📂common
+     ┣ 📂config
+     ┃ ┣ 📜PasswordEncoder.java
+     ┃ ┗ 📜WebConfig.java
+     ┣ 📂entity
+     ┃ ┣ 📜BaseEntity.java
+     ┃ ┣ 📜Reply.java
+     ┃ ┣ 📜Todo.java
+     ┃ ┗ 📜User.java
+     ┣ 📂exception
+     ┃ ┣ 📜CustomRepositoryException.java
+     ┃ ┣ 📜CustomValidationException.java
+     ┃ ┣ 📜ErrorDetails.java
+     ┃ ┗ 📜GlobalExceptionHandler.java
+     ┣ 📂filter
+     ┃ ┗ 📜LoginFilter.java
+     ┗ 📂util
+     ┃ ┣ 📜ErrorResponse.java
+     ┃ ┗ 📜Parse.java
+     📂login
+     ┣ 📂controller
+     ┃ ┗ 📜LoginController.java
+     ┗ 📂dto
+     ┃ ┗ 📜LoginRequestDto.java
+     📂reply
+     ┣ 📂controller
+     ┃ ┗ 📜ReplyController.java
+     ┣ 📂dto
+     ┃ ┣ 📜ReplyCreateRequestDto.java
+     ┃ ┣ 📜ReplyResponseDto.java
+     ┃ ┗ 📜ReplyUpdateRequestDto.java
+     ┣ 📂repository
+     ┃ ┗ 📜ReplyRepository.java
+     ┗ 📂service
+     ┃ ┗ 📜ReplyService.java
+     📂todo
+     ┣ 📂controller
+     ┃ ┗ 📜TodoController.java
+     ┣ 📂dto
+     ┃ ┣ 📜TodoCreateRequestDto.java
+     ┃ ┣ 📜TodoPagingResponseDto.java
+     ┃ ┣ 📜TodoResponseDto.java
+     ┃ ┗ 📜TodoUpdateRequestDto.java
+     ┣ 📂repository
+     ┃ ┗ 📜TodoRepository.java
+     ┗ 📂service
+     ┃ ┗ 📜TodoService.java
+     📂user
+     ┣ 📂controller
+     ┃ ┗ 📜UserController.java
+     ┣ 📂dto
+     ┃ ┣ 📜UserCreateRequestDto.java
+     ┃ ┣ 📜UserResponseDto.java
+     ┃ ┗ 📜UserUpdateRequestDto.java
+     ┣ 📂repository
+     ┃ ┗ 📜UserRepository.java
+     ┗ 📂service
+     ┃ ┗ 📜UserService.java
+     📜DevelopTodoApplication.java
 
 ------
 
