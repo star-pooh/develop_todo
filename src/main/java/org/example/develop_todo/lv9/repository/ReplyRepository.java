@@ -1,5 +1,6 @@
 package org.example.develop_todo.lv9.repository;
 
+import java.util.Optional;
 import org.example.develop_todo.lv9.entity.Reply;
 import org.example.develop_todo.lv9.exception.CustomRepositoryException;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,8 @@ public interface ReplyRepository extends JpaRepository<Reply, Long> {
                 new CustomRepositoryException(
                     HttpStatus.NOT_FOUND, "존재하지 않는 댓글 ID 입니다. ID : " + id));
   }
+
+  Optional<Void> deleteAllByTodoId(Long todoId);
+
+  Optional<Void> deleteAllByUserId(Long userId);
 }

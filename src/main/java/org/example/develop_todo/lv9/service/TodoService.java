@@ -7,6 +7,7 @@ import org.example.develop_todo.lv9.dto.todo.TodoPagingResponseDto;
 import org.example.develop_todo.lv9.dto.todo.TodoResponseDto;
 import org.example.develop_todo.lv9.entity.Todo;
 import org.example.develop_todo.lv9.entity.User;
+import org.example.develop_todo.lv9.repository.ReplyRepository;
 import org.example.develop_todo.lv9.repository.TodoRepository;
 import org.example.develop_todo.lv9.repository.UserRepository;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ public class TodoService {
 
   private final TodoRepository todoRepository;
   private final UserRepository userRepository;
+  private final ReplyRepository replyRepository;
 
   /**
    * 일정 생성
@@ -79,7 +81,11 @@ public class TodoService {
    *
    * @param id 일정 ID
    */
+  @Transactional
   public void deleteTodo(Long id) {
+    // 일정에 작성된 모든 댓글 삭제
+    this.replyRepository.deleteAllByTodoId(id);
+
     Todo findTodo = this.todoRepository.findByIdOrElseThrow(id);
     this.todoRepository.delete(findTodo);
   }

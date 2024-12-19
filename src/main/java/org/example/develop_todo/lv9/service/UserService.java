@@ -7,6 +7,8 @@ import org.example.develop_todo.lv9.config.PasswordEncoder;
 import org.example.develop_todo.lv9.dto.user.UserResponseDto;
 import org.example.develop_todo.lv9.entity.User;
 import org.example.develop_todo.lv9.exception.CustomRepositoryException;
+import org.example.develop_todo.lv9.repository.ReplyRepository;
+import org.example.develop_todo.lv9.repository.TodoRepository;
 import org.example.develop_todo.lv9.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   private final UserRepository userRepository;
+  private final TodoRepository todoRepository;
+  private final ReplyRepository replyRepository;
   private final PasswordEncoder passwordEncoder;
 
   /**
@@ -79,7 +83,13 @@ public class UserService {
    *
    * @param id 사용자 ID
    */
+  @Transactional
   public void deleteUser(Long id) {
+    // 사용자가 작성한 모든 댓글 삭제
+    this.replyRepository.deleteAllByUserId(id);
+    // 사용자가 작성한 모든 일정 삭제
+    this.todoRepository.deleteAllByUserId(id);
+
     User findUser = this.userRepository.findByIdElseOrThrow(id);
     this.userRepository.delete(findUser);
   }

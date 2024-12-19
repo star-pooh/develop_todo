@@ -1,5 +1,6 @@
 package org.example.develop_todo.lv9.repository;
 
+import java.util.Optional;
 import org.example.develop_todo.lv9.entity.Todo;
 import org.example.develop_todo.lv9.exception.CustomRepositoryException;
 import org.springframework.data.domain.Page;
@@ -18,4 +19,6 @@ public interface TodoRepository extends JpaRepository<Todo, Long> {
   }
 
   Page<Todo> findAllByOrderByModifiedDateDesc(Pageable pageable);
+
+  Optional<Void> deleteAllByUserId(Long userId);
 }

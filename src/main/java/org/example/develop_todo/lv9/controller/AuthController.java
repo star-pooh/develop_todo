@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.example.develop_todo.lv9.dto.login.LoginRequestDto;
 import org.example.develop_todo.lv9.dto.user.UserResponseDto;
@@ -50,8 +51,29 @@ public class AuthController {
 
     Map<String, String> response = new HashMap<>();
 
-    String loginMessage = userResponseDto.getUsername() + "님이 로그인하셨습니다.";
+    String loginMessage = userResponseDto.getUsername() + "님이 로그인 하셨습니다.";
     response.put("message", loginMessage);
+
+    return new ResponseEntity<>(response, HttpStatus.OK);
+  }
+
+  /**
+   * 사용자 로그아웃
+   *
+   * @param request HttpServletRequest
+   * @return 로그아웃 결과
+   */
+  @PostMapping("/logout")
+  public ResponseEntity<Map<String, String>> logout(HttpServletRequest request) {
+    // 로그인하지 않으면 HttpSession을 null로 반환
+    HttpSession session = request.getSession(false);
+
+    if (!Objects.isNull(session)) {
+      session.invalidate();
+    }
+
+    Map<String, String> response = new HashMap<>();
+    response.put("message", "로그아웃이 완료되었습니다.");
 
     return new ResponseEntity<>(response, HttpStatus.OK);
   }

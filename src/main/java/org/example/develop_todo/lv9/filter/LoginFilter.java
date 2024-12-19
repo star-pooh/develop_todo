@@ -18,7 +18,7 @@ import org.springframework.util.PatternMatchUtils;
 public class LoginFilter implements Filter {
 
   // 필터 처리 제외 URI
-  private static final String[] WHITE_LIST = {"/users/signup", "/login"};
+  private static final String[] WHITE_LIST = {"/users/signup", "/login", "/logout"};
 
   @Override
   public void doFilter(
