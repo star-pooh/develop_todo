@@ -1,4 +1,4 @@
-package org.example.develop_todo.lv9.dto.error;
+package org.example.develop_todo.lv9.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
